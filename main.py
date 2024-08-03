@@ -1,9 +1,11 @@
 #from FirstScriptFunction import *
-from RockPaperScissors import *
+#from RockPaperScissors import *
+from RPSFunctions import *
 
 def main():
     #first_script()
-    rockpaperscissors()
+    #rockpaperscissors()
+    rps()
 
 if __name__ == "__main__":
     main()
