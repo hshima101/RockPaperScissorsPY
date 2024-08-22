@@ -20,10 +20,12 @@ def rps():
             name = input("Enter your name: ")
             print_results(wins, losses, ties, name)
             write('scores.txt', wins, losses, ties, name)
+            alphabetical('scores.txt')
             sys.exit()
         
         result, wins, losses, ties = guess(guess_str, wins, losses, ties)
         print(result)
+        
 
 
 #function will do input checking before sending input to 
@@ -65,11 +67,12 @@ def score(wins, loses, ties, name):
             
 def write(filename, wins, losses, ties, name):
     try: 
-        with open(filename, 'w') as f:
+        with open(filename, 'a') as f: #'w' for write mode, 'a' for append mode
             f.write(f"Name: {name}\n")
             f.write(f"Wins: {wins}\n")
             f.write(f"Losses: {losses}\n")
             f.write(f"Ties: {ties}\n")
+            f.write("\n") 
         print(f"Data written to {filename} successfully")
     except Exception as e:
         print(f"Error writing to {filename}")
@@ -83,7 +86,47 @@ def load(filename):
         print(f'Error loading data from {file}: {str(e)}')
         return []
 
+def alphabetical(filename):
+    try:
+        with open(filename, 'r') as f:
+            lines = f.readlines()
 
+        # Parse the contents into a list of dictionaries 
+        records = []
+        current_record = {}
+
+        for line in lines:
+            line = line.strip()
+            if line.startswith("Name:"):
+                if current_record: 
+                    records.append(current_record)
+                current_record = {"Name": line.replace("Name: ", "")}
+            elif line.startswith("Wins:"):
+                current_record["Wins"] = int(line.replace("Wins: ",""))
+            elif line.startswith("Losses"):
+                current_record["Losses"] = int(line.replace("Losses: ", ""))
+            elif line.startswith("Ties:"):
+                current_record["Ties"] = int(line.replace("Ties: ", ""))
+
+        if current_record: #Add the last record
+            records.append(current_record)
+
+        #sort the records alphabeticallty by name
+        records.sort(key=lambda x: x["Name"])
+
+        #write the sorted records back to the file
+        with open(filename, 'w') as f:
+            for record in records:
+                f.write(f"Name: {record['Name']}\n")
+                f.write(f"Wins: {record['Wins']}\n")
+                f.write(f"Losses: {record['Losses']}\n")
+                f.write(f"Ties: {record['Ties']}\n")
+                f.write("\n")
+
+        print(f"{filename} reorganized alphabetically by name successfully.")
+
+    except Exception as e:
+        print(f"Error reorganizing {filename}: {str(e)}")
 
     
 

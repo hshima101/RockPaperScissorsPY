@@ -1,4 +1,20 @@
+Name: Alex
+Wins: 5
+Losses: 4
+Ties: 6
+
+Name: Barry
+Wins: 6
+Losses: 3
+Ties: 7
+
+Name: Cindy
+Wins: 6
+Losses: 6
+Ties: 3
+
 Name: Hideo
-Wins: 11
-Losses: 9
-Ties: 10
+Wins: 5
+Losses: 4
+Ties: 6
+
