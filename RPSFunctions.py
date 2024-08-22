@@ -17,7 +17,9 @@ def rps():
             continue
         
         if guess_str == 'q':
-            print_results(wins, losses, ties)
+            name = input("Enter your name: ")
+            print_results(wins, losses, ties, name)
+            write('scores.txt', wins, losses, ties, name)
             sys.exit()
         
         result, wins, losses, ties = guess(guess_str, wins, losses, ties)
@@ -29,7 +31,8 @@ def rps():
 def inputCheck(input):
     return input in ['0', '1', '2', 'q']
 
-def print_results(wins, losses, ties):
+def print_results(wins, losses, ties, name):
+    print(name)
     print("Wins: " + str(wins))
     print("Losses: " + str(losses))
     print("Ties: " + str(ties))
@@ -56,6 +59,30 @@ def guess(guess_str, wins, losses, ties):
         losses += 1
 
     return result_message, wins, losses, ties
+
+def score(wins, loses, ties, name):
+    print()
+            
+def write(filename, wins, losses, ties, name):
+    try: 
+        with open(filename, 'w') as f:
+            f.write(f"Name: {name}\n")
+            f.write(f"Wins: {wins}\n")
+            f.write(f"Losses: {losses}\n")
+            f.write(f"Ties: {ties}\n")
+        print(f"Data written to {filename} successfully")
+    except Exception as e:
+        print(f"Error writing to {filename}")
+
+def load(filename):
+    try:
+        with open(filename, 'r') as file:
+            data = [int(line.strip()) for line in file]
+        return data
+    except Exception as e:
+        print(f'Error loading data from {file}: {str(e)}')
+        return []
+
 
 
     
