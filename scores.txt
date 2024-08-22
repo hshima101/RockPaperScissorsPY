@@ -1,0 +1,4 @@
+Name: Hideo
+Wins: 11
+Losses: 9
+Ties: 10
