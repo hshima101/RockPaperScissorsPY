@@ -1,5 +1,4 @@
 from score import *
-
 # sort the records in alphabetical order
 def alphabetical(filename):
     try:
@@ -45,6 +44,8 @@ def alphabetical(filename):
 
     except Exception as e:
         print(f"Error reorganizing {filename}: {str(e)}")
+    records.clear()
+    current_record.clear()
 
 #sort the records in the document based on high score 
 def highscore(filename):
@@ -90,3 +91,5 @@ def highscore(filename):
 
     except Exception as e:
         print(f"Error reorganizing {filename}: {str(e)}")
+    records.clear()
+    current_record.clear()
