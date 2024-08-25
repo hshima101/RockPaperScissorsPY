@@ -1,8 +1,26 @@
+Name: Dan
+Wins: 9
+Losses: 4
+Ties: 7
+Final Score: 21
+
 Name: sara
 Wins: 6
 Losses: 8
 Ties: 7
 Final Score: 11
+
+Name: Sam
+Wins: 4
+Losses: 5
+Ties: 6
+Final Score: 9
+
+Name: Man
+Wins: 4
+Losses: 8
+Ties: 8
+Final Score: 8
 
 Name: Hideo
 Wins: 2

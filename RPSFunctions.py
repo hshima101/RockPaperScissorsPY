@@ -1,6 +1,7 @@
 import random, sys
 from sort import *
 from score import *
+from filewrite import *
 
 #general function will encapsulate other functions
 #this function will also keep score
@@ -28,12 +29,11 @@ def rps():
             write('highscore.txt', wins, losses, ties, name, final)
             alphabetical('scores.txt')
             highscore('highscore.txt')
+            del wins, losses, ties, name, final
             sys.exit()
         
         result, wins, losses, ties = guess(guess_str, wins, losses, ties)
         print(result)
-        
-
 
 #function will do input checking before sending input to 
 #program 
@@ -70,25 +70,5 @@ def guess(guess_str, wins, losses, ties):
 
     return result_message, wins, losses, ties
             
-def write(filename, wins, losses, ties, name, final):
-    try: 
-        with open(filename, 'a') as f: #'w' for write mode, 'a' for append mode
-            f.write(f"Name: {name}\n")
-            f.write(f"Wins: {wins}\n")
-            f.write(f"Losses: {losses}\n")
-            f.write(f"Ties: {ties}\n")
-            f.write(f"Final Score: {final}\n")
-            f.write("\n") 
-        print(f"Data written to {filename} successfully")
-    except Exception as e:
-        print(f"Error writing to {filename}")
 
-def load(filename):
-    try:
-        with open(filename, 'r') as file:
-            data = [int(line.strip()) for line in file]
-        return data
-    except Exception as e:
-        print(f'Error loading data from {file}: {str(e)}')
-        return []
 
