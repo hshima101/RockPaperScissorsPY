@@ -1,12 +1,12 @@
-Name: Hideo
-Wins: 2
-Losses: 5
-Ties: 3
-Final Score: 2
-
 Name: sara
 Wins: 6
 Losses: 8
 Ties: 7
 Final Score: 11
+
+Name: Hideo
+Wins: 2
+Losses: 5
+Ties: 3
+Final Score: 2
 
